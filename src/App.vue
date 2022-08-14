@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div :class="appTheme" class="pt-0.5">
+    <AppHeader />
+
+    <transition name="fade" mode="out-in">
+			<router-view :theme="appTheme" />
+		</transition>
+    
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from './components/AppHeader';
+import feather from 'feather-icons';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
+		AppHeader,
+	},
+  data: () => {
+		return {
+			appTheme: localStorage.getItem('theme'),
+		};
+	},
+	mounted() {
+		feather.replace();
+	},
+	updated() {
+		feather.replace();
+	},
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
