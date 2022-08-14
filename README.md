@@ -1,4 +1,4 @@
-# vue-trail-app
+# vue-starter-template
 
 ## Project setup
 ```
